@@ -6,7 +6,7 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 from sklearn.model_selection import cross_val_score, train_test_split
 
-df = pd.read_csv("C:/Users/caleb/OneDrive/Documents/School/Grad School/Mod1/Data Wrangling/player_data.csv", encoding="latin1")
+df = pd.read_csv("player_data.csv", encoding="latin1")
 
 # Handle missing numeric values (fill NA with 0 or column median)
 X = df.select_dtypes(include=["number"]).drop(columns=["Salary"], errors="ignore")
