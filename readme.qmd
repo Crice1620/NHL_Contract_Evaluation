@@ -1,8 +1,8 @@
-## Overview
+Overview
 
 This project uses NHL player statistics to predict player salaries using a Random Forest regression model. The goal is to determine which player statistics and characteristics are most strongly associated with NHL salary and evaluate how accurately player salaries can be predicted from on-ice performance.
 
-# Objective
+Objective
 
 The primary objective is to build a machine learning model that can:
 
@@ -12,7 +12,7 @@ The primary objective is to build a machine learning model that can:
 - Compare actual salaries to predicted salaries
 - Provide insight into the relationship between player performance and compensation
 
-## Methodology
+Methodology
 Data Preparation
 
 The player dataset is imported from a CSV file and prepared for modeling.
