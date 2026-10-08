@@ -1,97 +1,85 @@
----
+Overview
 
-title: "NHL Salary Prediction Using Player Statistics"
-subtitle: "Random Forest Regression Model"
-format:
-html:
-toc: true
-toc-location: left
-------------------
+This project uses NHL player statistics to predict player salaries using a Random Forest regression model. The goal is to determine which player statistics and characteristics are most strongly associated with NHL salary and evaluate how accurately player salaries can be predicted from on-ice performance.
 
-# Overview
-
-This project uses **NHL player statistics to predict player salaries** using a Random Forest regression model. The goal is to determine which player statistics and characteristics are most strongly associated with NHL salary and evaluate how accurately player salaries can be predicted from on-ice performance.
-
-# Objective
+Objective
 
 The primary objective is to build a machine learning model that can:
 
-* Predict NHL player salaries based on player statistics
-* Identify the most important variables associated with salary
-* Evaluate the predictive performance of the model
-* Compare actual salaries to predicted salaries
-* Provide insight into the relationship between player performance and compensation
+- Predict NHL player salaries based on player statistics
+- Identify the most important variables associated with salary
+- Evaluate the predictive performance of the model
+- Compare actual salaries to predicted salaries
+- Provide insight into the relationship between player performance and compensation
 
-# Methodology
-
-## Data Preparation
+Methodology
+Data Preparation
 
 The player dataset is imported from a CSV file and prepared for modeling.
 
-Numerical variables are used as predictors, while the `Salary` column is used as the target variable.
+Numerical variables are used as predictors, while the Salary column is used as the target variable.
 
-Missing numerical values are handled by replacing them with `0`.
+Missing numerical values are handled by replacing them with 0.
 
-Player positions are also standardized. Centers (`C`), left wings (`LW`), right wings (`RW`), and combinations of these positions are grouped into a single **FWD** category.
+Player positions are also standardized. Centers (C), left wings (LW), right wings (RW), and combinations of these positions are grouped into a single FWD category.
 
-Categorical position variables are then converted into numerical variables using **one-hot encoding**.
+Categorical position variables are then converted into numerical variables using one-hot encoding.
 
-## Model
+Model
 
-A **Random Forest Regressor** is used to predict player salary.
+A Random Forest Regressor is used to predict player salary.
 
 The model uses:
 
-* 100 decision trees
-* A random state of 42 for reproducibility
-* An 80/20 training-test split
-* Five-fold cross-validation
+100 decision trees
+A random state of 42 for reproducibility
+An 80/20 training-test split
+Five-fold cross-validation
 
 The target variable is:
 
-**Salary**
+Salary
 
 The predictor variables consist of the available numerical player statistics and the player's position.
 
-# Model Evaluation
+Model Evaluation
 
 The model is evaluated using several metrics:
 
-### R²
+R²
 
 The R-squared value measures how much of the variation in player salaries is explained by the model.
 
 A higher R² indicates that the model is better able to explain differences in player salaries.
 
-### Mean Absolute Error (MAE)
+Mean Absolute Error (MAE)
 
 MAE measures the average absolute difference between the actual and predicted salaries.
 
-### Root Mean Squared Error (RMSE)
+Root Mean Squared Error (RMSE)
 
 RMSE measures the typical prediction error while giving greater weight to larger errors.
 
-### Cross-Validation
+Cross-Validation
 
 Five-fold cross-validation is used to evaluate the model's stability across different subsets of the data.
 
-# Feature Importance
+Feature Importance
 
 One of the main goals of the project is to determine which player statistics are the strongest predictors of salary.
 
-The Random Forest model provides a **feature importance score** for each predictor. The ten variables with the highest importance scores are displayed in a bar chart.
+The Random Forest model provides a feature importance score for each predictor. The ten variables with the highest importance scores are displayed in a bar chart.
 
 This helps identify which aspects of player performance and player characteristics are most influential in the model's salary predictions.
 
-# Visualizations
+Visualizations
+Feature Importance
 
-## Feature Importance
-
-The first visualization displays the **Top 10 Drivers of NHL Salary** according to the Random Forest model.
+The first visualization displays the Top 10 Drivers of NHL Salary according to the Random Forest model.
 
 This provides a quick way to see which player statistics contribute most to the model's predictions.
 
-## Actual vs. Predicted Salary
+Actual vs. Predicted Salary
 
 The second visualization compares each player's actual salary with the salary predicted by the model.
 
@@ -99,73 +87,58 @@ A perfect prediction would fall directly on the diagonal reference line.
 
 Players farther away from the line represent larger prediction errors.
 
-# Technologies Used
-
-* **Python**
-* **pandas** – Data manipulation and preprocessing
-* **NumPy** – Numerical calculations
-* **scikit-learn** – Machine learning and model evaluation
-* **Matplotlib** – Data visualization
-* **Seaborn** – Statistical visualization
-
-# Project Structure
-
-```text
+Technologies Used
+Python
+pandas – Data manipulation and preprocessing
+NumPy – Numerical calculations
+scikit-learn – Machine learning and model evaluation
+Matplotlib – Data visualization
+Seaborn – Statistical visualization
+Project Structure
 .
 ├── player_data.csv
 ├── salary_prediction.py
 └── README.qmd
-```
 
 The main Python script loads the player dataset, preprocesses the data, trains the Random Forest model, evaluates its performance, and generates the visualizations.
 
-# How to Run
-
-## 1. Install Required Packages
+How to Run
+1. Install Required Packages
 
 Install the required Python packages with:
 
-```bash
 pip install pandas numpy matplotlib seaborn scikit-learn
-```
+2. Update the Dataset Path
 
-## 2. Update the Dataset Path
-
-Update the `pd.read_csv()` path in the Python script so that it points to your local copy of the player dataset.
+Update the pd.read_csv() path in the Python script so that it points to your local copy of the player dataset.
 
 For example:
 
-```python
 df = pd.read_csv("path/to/player_data.csv", encoding="latin1")
-```
-
-## 3. Run the Python Script
+3. Run the Python Script
 
 Run the script using Python:
 
-```bash
 python salary_prediction.py
-```
 
 The model will print the test R² and the top 10 feature importances, followed by the two visualizations.
 
-# Future Improvements
+Future Improvements
 
 Potential improvements to the project include:
 
-* Adding additional NHL advanced statistics
-* Incorporating player age and experience
-* Including contract length and contract year
-* Accounting for salary-cap changes across seasons
-* Comparing Random Forest with other regression models
-* Using hyperparameter tuning to improve model performance
-* Applying log transformation to salary
-* Separating forwards, defensemen, and goaltenders into more detailed models
-* Using multiple seasons of player and contract data
-* Adding additional model evaluation metrics
+Adding additional NHL advanced statistics
+Incorporating player age and experience
+Including contract length and contract year
+Accounting for salary-cap changes across seasons
+Comparing Random Forest with other regression models
+Using hyperparameter tuning to improve model performance
+Applying log transformation to salary
+Separating forwards, defensemen, and goaltenders into more detailed models
+Using multiple seasons of player and contract data
+Adding additional model evaluation metrics
+Conclusion
 
-# Conclusion
-
-This project demonstrates how machine learning can be used to analyze the relationship between **NHL player performance and salary**.
+This project demonstrates how machine learning can be used to analyze the relationship between NHL player performance and salary.
 
 By combining player statistics with Random Forest regression, the project provides both a predictive model for player salary and an interpretable ranking of the statistics that are most influential in those predictions.
